@@ -1,0 +1,106 @@
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+    <div class="app-brand demo">
+        <a href="" class="app-brand-link">
+              <span class="app-brand-logo demo">
+                <img src="" height="40" width="120" alt="">
+              </span>
+
+        </a>
+
+        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+            <i class="bx bx-chevron-left bx-sm align-middle"></i>
+        </a>
+    </div>
+
+    <div class="menu-inner-shadow"></div>
+
+    <ul class="menu-inner py-1">
+        <!-- Dashboard -->
+        <li class="menu-item {% if title == 'Dashboard' %}active{% endif %}">
+            <a href="{% url 'dashboard' %}" class="menu-link">
+                <i class='menu-icon tf-icons bx bxl-product-hunt'></i>
+                <div data-i18n="Analytics">Dashboard</div>
+            </a>
+        </li>
+        {% if user.role == 'Admin' %}
+        <li class="menu-item {% if title == 'Staff' %}active{% endif %}">
+            <a href="{% url 'staff' %}" class="menu-link">
+                <i class='menu-icon tf-icons bx bx-user'></i>
+                <div data-i18n="Analytics">Staff</div>
+            </a>
+        </li>
+        {% endif %}
+        {% if user.role == 'Doctor' or user.role == 'Admin' %}
+        <li class="menu-item {% if title == 'Patient' %}active{% endif %}">
+            <a href="{% url 'patient' %}" class="menu-link">
+                <i class='menu-icon tf-icons bx bx-child'></i>
+                <div data-i18n="Analytics">Patient</div>
+            </a>
+        </li>
+        {% endif %}
+        {% if user.role == 'Admin' %}
+        <li class="menu-item {% if title == 'Department' %}active{% endif %}">
+            <a href="{% url 'department' %}" class="menu-link">
+                <i class='menu-icon tf-icons bx bx-buildings'></i>
+                <div data-i18n="Analytics">Department</div>
+            </a>
+        </li>
+        {% endif %}
+        {% if user.role == 'Admin' %}
+            <li class="menu-item {% if title == 'Medical Test' %}active{% endif %}">
+                <a href="{% url 'medical_test' %}" class="menu-link">
+                    <i class='menu-icon tf-icons bx bx-plus-medical'></i>
+                    <div data-i18n="Analytics">Medical Test</div>
+                </a>
+            </li>
+        {% endif %}
+        {% if user.role == 'Doctor' %}
+        <li class="menu-item {% if title == 'Appointment' %}active{% endif %}">
+            <a href="{% url 'appointment' %}" class="menu-link">
+                <i class='menu-icon tf-icons bx bx-plus-medical'></i>
+                <div data-i18n="Analytics">Appointment</div>
+            </a>
+        </li>
+        {% endif %}
+        {% if user.role == 'Admin' or user.role == 'Inventory Manager' %}
+            <li class="menu-item  {% if 'Inventory' in title %}active open{% endif %}">
+                <div class="menu-link menu-toggle">
+                    <i class='menu-icon tf-icons bx bx-data'></i>
+                    <div data-i18n="Analytics">Inventory</div>
+                </div>
+                <ul class="menu-sub">
+                    <li class="menu-item {% if title == 'Inventory | Inventories' %}active{% endif %}"><a
+                            class="menu-link" href="{% url 'inventory' %}">Inventories</a></li>
+                    <li class="menu-item {% if title == 'Inventory | Items' %}active{% endif %}"><a class="menu-link"
+                                                                                                    href="{% url 'inventory_item' %}">Items</a>
+                    </li>
+                    <li class="menu-item {% if title == 'Inventory | Item Price' %}active{% endif %}"><a
+                            class="menu-link" href="{% url 'item_price' %}">Items Price</a></li>
+                <li class="menu-item {% if title == 'Inventory | Transactions' %}active{% endif %}"><a class="menu-link" href="{% url 'transactions' %}">Transactions</a></li>
+                <li class="menu-item {% if title == 'Inventory | Suppliers' %}active{% endif %}"><a class="menu-link" href="{% url 'supplier' %}">Suppliers</a></li>
+                <li class="menu-item {% if title == 'Inventory | Categories' %}active{% endif %}"><a class="menu-link" href="{% url 'category' %}">Categories</a></li>
+            </ul>
+        </li>
+        {% endif %}
+{#        <li class="menu-item {% if title == 'Report' %}active{% endif %}">#}
+{#            <a href="" class="menu-link">#}
+{#                <i class='menu-icon tf-icons bx bxs-report'></i>#}
+{#                <div data-i18n="Analytics">Report</div>#}
+{#            </a>#}
+{#        </li>#}
+        {% if user.role == 'Admin' or user.role == 'Accountant' %}
+        <li class="menu-item {% if title == 'Billing' %}active{% endif %}">
+            <a href="{% url 'billing' %}" class="menu-link">
+                <i class='menu-icon tf-icons bx bx-wallet'></i>
+                <div data-i18n="Analytics">Billing</div>
+            </a>
+        </li>
+        <li class="menu-item {% if title == 'Payment' %}active{% endif %}">
+            <a href="{% url 'payment' %}" class="menu-link">
+                <i class='menu-icon tf-icons bx bx-money-withdraw'></i>
+                <div data-i18n="Analytics">Payment</div>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</aside>
